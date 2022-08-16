@@ -200,7 +200,6 @@ export default createStore({
             if (user.usertype === "Admin") {
               context.state.admin = true 
             }
-            console.log(context.state.admin)
             router.push({
               name: "products"
             })
@@ -277,8 +276,6 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
-          // alert(data.msg)
-          // console.log(data);
           let cart = JSON.stringify(data);
           context.commit("setcart", cart);
         });
@@ -296,8 +293,6 @@ export default createStore({
         })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
-          console.log(id)
           alert(data.msg)
           context.state.cart = null
           context.dispatch("getCart")
@@ -317,9 +312,8 @@ export default createStore({
         .then((res) => res.json())
         .then((data) => {
           alert(data.msg)
+          context.state.cart = []
           context.dispatch("getCart")
-          // context.state.cart = null
-
         })
     },
 
@@ -339,8 +333,6 @@ export default createStore({
           })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
-            console.log(id);
             alert(data.msg);
             context.dispatch("getCart");
           });
