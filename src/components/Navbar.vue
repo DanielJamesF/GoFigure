@@ -75,7 +75,7 @@ export default {
     }
   },
   mounted() {
-
+    this.$store.dispatch("setAdmin")
 },
   computed: {
     user() {
@@ -102,6 +102,8 @@ export default {
       this.$store.state.cart = null;
       this.$store.state.token = null;
       this.$store.state.admin = false;
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
     },
   },
 };

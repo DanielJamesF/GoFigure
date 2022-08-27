@@ -9,12 +9,12 @@ export default createStore({
   state: {
     products: null,
     product: null,
-    token: null,
+    token: null || localStorage.getItem('token'),
     // user: {
     //   firstname: "Boi"
     // },
-    user: null,
-    admin : false,
+    user: null || JSON.parse(localStorage.getItem('user')),
+    admin: false,
     users: null,
     cart: null,
     asc: true
@@ -30,22 +30,34 @@ export default createStore({
     },
     setuser: (state, user) => {
       state.user = user;
+      localStorage.setItem("user", JSON.stringify(user))
+      // console.log(user);
     },
     setcart: (state, cart) => {
       let newCart = JSON.parse(cart);
       state.cart = newCart;
-      // console.table(newCart.length)
+      // console.log(newCart)
     },
     setusers: (state, users) => {
       state.users = users;
-      // console.log(user)
     },
     setToken: (state, token) => {
       state.token = token;
-      // console.log(token)
+      localStorage.setItem("token", token)
+      // console.log(typeof(token))
+      // console.log((token))
     },
   },
   actions: {
+    setAdmin: async (context) => {
+      let user = context.state.user
+      if (user != null) {
+        if (user.usertype === "Admin") {
+          context.state.admin = true
+        }
+        context.dispatch("getCart")
+      }
+    },
     // retrieves all products
     getProducts: async (context) => {
       // fetch("http://localhost:3000/products")
@@ -122,7 +134,7 @@ export default createStore({
     },
 
     // adds user to db
-    register: async (context, payload) => { 
+    register: async (context, payload) => {
       const {
         firstname,
         lastname,
@@ -154,14 +166,7 @@ export default createStore({
         .then((data) => {
           if (data.msg === "Registration Successful") {
             alert(data.msg);
-            let user = data.user;
-            let token = data.token;
-            context.commit("setuser", user);
-            context.commit("setToken", token);
-            context.dispatch("getProducts");
-            router.push({
-              name: "products",
-            });
+            context.dispatch("login", payload)
           } else {
             alert(data.msg);
             document.getElementById("register").reset();
@@ -198,7 +203,7 @@ export default createStore({
             context.commit("setToken", token);
             context.commit("setcart", cart);
             if (user.usertype === "Admin") {
-              context.state.admin = true 
+              context.state.admin = true
             }
             router.push({
               name: "products"

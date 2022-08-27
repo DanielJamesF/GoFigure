@@ -140,7 +140,7 @@ export default {
     cart() {
       return this.$store.state.cart;
     },
-    total() {
+   total() {
       let prices = this.$store.state.cart;
       let sum = prices.reduce((x, cart) => {
         return x + cart.price;
