@@ -15,5 +15,10 @@ npm run serve
 npm run build
 ```
 
+### Live Site
+```
+https://gofigure-b695c.web.app
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
