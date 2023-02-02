@@ -1,80 +1,44 @@
 <template>
   <div class="container-fluid text-center">
     <div class="row d-flex justify-content-center align-content-center">
-      <form id="register"
-        class="form-control mx-auto p-5 text-black"
-        @submit.prevent="register"
-      >
-        <h2 style="font-size: 3vw" class="text-light">Register</h2>
+      <form id="register" class="form-control mx-auto p-5 text-black" @submit.prevent="register">
+        <h2 class="text-light">Register</h2>
         <div class="form-group m-3">
-          <!-- firstName -->
-          <label for="name"></label>
-          <input
-            id="name"
-            v-model="name"
-            class="form-control my-3"
-            type="text"
-            placeholder="Enter Name"
-            required
-          />
+          <div class="row">
+            <div class="col-md-6">
+              <!-- firstName -->
+              <label for="name"></label>
+              <input id="name" v-model="name" class="form-control my-3" type="text" placeholder="Enter Name" required />
 
-          <!-- lastname -->
-          <label for="lastname"></label>
-          <input
-            id="lastname"
-            v-model="lastname"
-            class="form-control my-3"
-            type="text"
-            placeholder="Enter Lastname"
-            required
-          />
+              <!-- lastname -->
+              <label for="lastname"></label>
+              <input id="lastname" v-model="lastname" class="form-control my-3" type="text" placeholder="Enter Lastname"
+                required />
 
-          <!-- email -->
-          <label for="email"></label>
-          <input
-            id="email"
-            v-model="email"
-            class="form-control my-3"
-            type="email"
-            placeholder="Enter Email Address"
-            required
-          />
+              <!-- email -->
+              <label for="email"></label>
+              <input id="email" v-model="email" class="form-control my-3" type="email" placeholder="Enter Email Address"
+                required />
+            </div>
+            <div class="col-md-6">
+              <!-- Contact -->
+              <label for="contact"></label>
+              <input id="contact" v-model="contact" class="form-control my-3" type="text" minlength="10"
+                placeholder="Add Contact Number" required />
 
-          <!-- Contact -->
-          <label for="contact"></label>
-          <input
-            id="contact"
-            v-model="contact"
-            class="form-control my-3"
-            type="text"
-            minlength="10"
-            placeholder="Add Contact Number"
-            required
-          />
+              <!-- Address -->
+              <label for="address"></label>
+              <input id="address" v-model="address" class="form-control my-3" type="text" placeholder="Enter Address"
+                required />
 
-          <!-- Address -->
-          <label for="address"></label>
-          <input
-            id="address"
-            v-model="address"
-            class="form-control my-3"
-            type="text"
-            placeholder="Enter Address"
-            required
-          />
-
-          <!-- password -->
-          <label for="password"></label>
-          <input
-            id="password"
-            v-model="password"
-            class="form-control my-3"
-            type="password"
-            maxlength="15"
-            placeholder="Choose password"
-            required
-          />
+              <!-- password -->
+              <label for="password"></label>
+              <input id="password" v-model="password" class="form-control my-3" type="password" maxlength="15"
+                placeholder="Choose password" required />
+            </div>
+          </div>
         </div>
+
         <button type="submit"><span> Register</span></button>
       </form>
     </div>
@@ -101,7 +65,7 @@ export default {
         firstname: this.name,
         lastname: this.lastname,
         email: this.email,
-        usertype: this.usertype,
+        usertype: "user",
         contact: this.contact,
         address: this.address,
         password: this.password,
@@ -120,19 +84,21 @@ export default {
 
 <style scoped>
 .container-fluid {
-    min-height: 100vh;
-    background-image: url('../assets/wow.gif');
-    background-blend-mode: multiply;
-    background-color: red;
-    padding-top: 95px;
+  min-height: 100vh;
+  background-image: url('../assets/wow.gif');
+  background-blend-mode: multiply;
+  background-color: red;
+  padding-top: 95px;
 }
-form{
+
+form {
   background-image: url('../assets/wall.jpg');
   background-position: center;
   width: 70%;
 }
+
 @media (max-width: 426px) {
-  form{
+  form {
     width: 100%;
   }
 }

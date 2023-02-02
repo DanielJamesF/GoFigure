@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import router from '@/router';
 export default {
   data() {
     return {
@@ -104,6 +105,9 @@ export default {
       this.$store.state.admin = false;
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      router.push({
+        name: 'login'
+      })
     },
   },
 };

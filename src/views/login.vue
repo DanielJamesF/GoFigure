@@ -46,6 +46,7 @@ export default {
     };
   },
   methods: {
+    
     // checks if user exists in db
     login() {
       return this.$store.dispatch("login", {
