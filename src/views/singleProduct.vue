@@ -8,13 +8,13 @@
         </router-link>
       </div>
         <div class="col-md-6 mx-auto">
-          <img :src="product[0].prodimg" class="mx-auto img-fluid" alt="" />
+          <img :src="product.prodimg" class="mx-auto img-fluid" alt="" />
         </div>
         <div class="col-md-6 d-flex flex-column justify-content-around text-start">
-          <h2>{{ product[0].prodname }}</h2>
-          <h2 >{{ product[0].category }}</h2>
-          <h2 class="fw-bolder">Price: R{{ product[0].price }}.00</h2>
-          <h2>{{ product[0].stock }}</h2>
+          <h2>{{ product.prodname }}</h2>
+          <h2 >{{ product.category }}</h2>
+          <h2 class="fw-bolder">Price: R{{ product.price }}.00</h2>
+          <h2>{{ product.stock }}</h2>
           <button @click="add"><span> Add to cart</span></button>
         </div>
       </div>
@@ -30,7 +30,6 @@ export default {
   props: ["id"],
   data() {
     return {
-      // id: this.id,
     };
   },
 

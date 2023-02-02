@@ -41,7 +41,7 @@
               <a
                 class="btn"
                 id="delete"
-                @click="$store.dispatch('deleteProduct', product.id)"
+                @click="$store.dispatch('deleteProduct', product.docid)"
                 ><i class="fa-solid fa-trash-can"></i
               ></a>
             </td>

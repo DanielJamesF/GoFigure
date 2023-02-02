@@ -45,7 +45,7 @@
           >
             <div class="my-auto">
               <router-link
-                :to="{ name: 'product', params: { id: product.id } }"
+                :to="{ name: 'product', params: { id: product.docid } }"
               >
                 <img :src="product.prodimg" class="card-img-top" alt="" />
               </router-link>

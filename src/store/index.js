@@ -1,7 +1,14 @@
 import { createStore } from "vuex";
 import { router } from "@/router/index.js";
 import bcrypt from "bcryptjs";
-import { getDoc, getTable, setData } from "./firebase_conn/queries";
+import {
+  deleteData,
+  getDoc,
+  getSingle,
+  getTable,
+  setData,
+  updateData,
+} from "./firebase_conn/queries";
 
 export default createStore({
   state: {
@@ -50,7 +57,7 @@ export default createStore({
     setAdmin: async (context) => {
       let user = context.state.user;
       if (user != null) {
-        console.log(user.usertype);
+        // console.log(user.usertype);
         if (user.usertype === "Admin") {
           context.state.admin = true;
         }
@@ -59,12 +66,7 @@ export default createStore({
     },
     // retrieves all products
     getProducts: async (context) => {
-      let i = await getDoc('Products');
-      // console.log(i.id);
-      console.log(i);
       let products = await getTable("Products");
-      // console.log(products);
-
       context.commit("setproducts", products);
     },
     // getProducts: async (context) => {
@@ -75,11 +77,17 @@ export default createStore({
     // },
     // retrieves single
     getProduct: async (context, id) => {
-      // fetch("http://localhost:3000/products/" + id)
-      fetch("https://node-eomp-api.herokuapp.com/products/" + id)
-        .then((res) => res.json())
-        .then((data) => context.commit("setproduct", data.results));
+      let product = await getSingle("Products", id);
+      product = product.data();
+      context.commit("setproduct", product);
     },
+
+    // getProduct: async (context, id) => {
+    //   // fetch("http://localhost:3000/products/" + id)
+    //   fetch("https://node-eomp-api.herokuapp.com/products/" + id)
+    //     .then((res) => res.json())
+    //     .then((data) => context.commit("setproduct", data.results));
+    // },
 
     addProduct: async (context, payload) => {
       let table = await getTable("Products");
@@ -90,11 +98,10 @@ export default createStore({
 
       let id = Math.max(...ids);
       console.log(id++);
-      payload.id = id
+      payload.id = id;
       payload.userid = context.state.user.id;
-      console.log(payload);
       setData("Products", payload);
-      context.dispatch('getProducts')
+      context.dispatch("getProducts");
     },
     // addProduct: async (context, payload) => {
     //   const { prodname, prodimg, category, stock, price } = payload;
@@ -121,10 +128,11 @@ export default createStore({
     // },
 
     // updates list
-    updateProduct: async (context, doc, product) => {
-      
+    updateProduct: async (context, product) => {
+      updateData("Products", product);
+      context.dispatch("getProducts");
     },
-    // 
+    //
     // updates list
     // updateProduct: async (context, product) => {
     //   // fetch("http://localhost:3000/products/" + product.id, {
@@ -143,17 +151,24 @@ export default createStore({
     //     });
     // },
     // Deletes Item from db
-    deleteProduct: async (context, id) => {
-      // fetch("http://localhost:3000/products/" + id, {
-      fetch("https://node-eomp-api.herokuapp.com/products/" + id, {
-        method: "DELETE",
-        headers: {
-          "x-auth-token": context.state.token,
-        },
-      })
-        .then((res) => res.json())
-        .then(() => context.dispatch("getProducts"));
+    deleteProduct: async (context, product) => {
+      console.log(product);
+      deleteData("Products", product);
+      context.dispatch("getProducts");
     },
+
+    // // Deletes Item from db
+    // deleteProduct: async (context, id) => {
+    //   // fetch("http://localhost:3000/products/" + id, {
+    //   fetch("https://node-eomp-api.herokuapp.com/products/" + id, {
+    //     method: "DELETE",
+    //     headers: {
+    //       "x-auth-token": context.state.token,
+    //     },
+    //   })
+    //     .then((res) => res.json())
+    //     .then(() => context.dispatch("getProducts"));
+    // },
 
     register: async (context, payload) => {
       // let load = await setData('Users')
