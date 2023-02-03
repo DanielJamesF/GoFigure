@@ -1,6 +1,30 @@
+// SETTING UP DATABASE
+// 1st Add a web app to project, use project name for web app name
+// register app, don't worry about hosting.
+// 2nd add a cloud firestore database to your firebase project
+// Click next until popups disapperared.
+// Start collection e.g Users (Collection is similiar to a table) 
+// add a document with auto-id e.g
+// add fields to document. (Similiar to JSON keys and values )
+
+// SETTING UP IN VUE
+// create firebase folder in store folder
+// create sdk.js file and queries.js file in firebase folder
+// npm install firebase, bcryptjs, firebase-tools  
+
+// IN SDK.JS
+// add firebase SDK
+// copy the code seen at web app sdk 
+
+// IN QUERIES.JS
+// Add all database queries
+
+
 import firebase from "./sdk";
 const db = firebase.firestore();
 
+// adds document id to fields, this may be needed if you add data from 
+// firebase database and not the frontend 
 export const getDoc = async (qry) => {
   const docs = db.collection(qry);
   const doc = await docs.get();
@@ -14,34 +38,9 @@ export const getDoc = async (qry) => {
   });
 };
 
-// export const getDoc = async (qry) => {
-//   const docs = await db
-//     .collection(qry)
-//     .get()
-//     .then((docid) => {
-//       let count = 0;
-//       let table = [];
-//       docid.forEach((doc) => {
-//         count++;
-//         if (count === 0) {
-//           return false;
-//         } else {
-//           table.push(doc.id);
-//         }
-//       });
-//       return table;
-//     })
-//     .catch(() => {
-//       return false;
-//     });
-//   return docs;
-//   // doc.forEach((doc) => {
-//   //   console.log(doc.id, "=>", doc.data());
-//   // });
-// };
-
+// gets data from table, collecton
+// query = whatever table name you have 
 export const getTable = async (query) => {
-  // console.log(firebase.firestore())
   let data = await db
     .collection(query)
     .get()
@@ -69,12 +68,19 @@ export const getSingle = async (qry, docid) => {
   return data;
 };
 
+// adds data to collection
 export const setData = async (qry, payload) => {
   const data = await db.collection(qry).add(payload);
   payload.docid = data.id;
   updateData(qry, payload);
+  if (data) {
+    alert("Successfully Added item");
+  } else {
+    alert("Error, Product not Added.");
+  }
 };
 
+// this is obvious
 export const updateData = async (qry, payload) => {
   console.log(payload);
   const data = db.collection(qry).doc(payload.docid).update(payload);
@@ -85,6 +91,7 @@ export const updateData = async (qry, payload) => {
   }
 };
 
+// this is obvious
 export const deleteData = async (qry, payload) => {
   const data = db.collection(qry).doc(payload).delete();
   if (data) {
