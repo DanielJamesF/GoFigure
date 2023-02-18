@@ -53,7 +53,7 @@
                 </h4>
 
                 <button id="delete" class="btn btn-warning float-sm-end"
-                  @click="$store.dispatch('removeOne', item.prodid)">
+                  @click="$store.dispatch('removeOne', item.docid)">
                   Delete Item
                 </button>
               </div>

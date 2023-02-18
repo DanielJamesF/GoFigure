@@ -118,5 +118,33 @@ export const updateCart = async (qry, userid, payload) => {
   arr = JSON.stringify(arr);
 
   let userCart = db.collection(qry).doc(userid);
-  let data = await userCart.update({ cart: arr });
+  await userCart.update({ cart: arr });
+};
+
+export const removeItem = async (qry, userid, docid) => {
+  // R
+  console.log("userid",  "=>", userid);
+  console.log("prodid",  "=>", docid);
+
+  let oldCart = await db.collection(qry).doc(userid).get();
+  oldCart = oldCart.data();
+  console.log(oldCart);
+  oldCart = oldCart.cart;
+
+  // filter out item 
+  let newCart = JSON.parse(oldCart).filter((x) => {
+    return x.docid != docid;
+  });
+  console.log("new cart",  "=>", newCart);
+
+
+  // update statement
+  let userCart = db.collection(qry).doc(userid);
+  await userCart.update({ cart: JSON.stringify(newCart) });
+};
+
+export const clearCart = async (qry, docid) => {
+  console.log(docid);
+  let clearCart = db.collection(qry).doc(docid);
+  await clearCart.update({ cart: null });
 };

@@ -57,22 +57,7 @@ export default {
 </script>
 
 <style scoped>
-#about {
-  /* background-image: url("https://i.postimg.cc/7hZP4mYC/wallpaperbetter-com-1920x1200-2.jpg"); */
-  /* background-image: url("https://i.postimg.cc/hjF7SFHX/wallpaperbetter-com-1920x1200-1.jpg"); */
-  /* background-image: url("https://i.postimg.cc/ncfT3grc/wallpaperbetter-com-1920x1200.jpg"); */
-  background-repeat: no-repeat;
-  /* background-position: center; */
-  background-size: cover;
-  /* min-height: 90vh; */
-}
 
-.banner {
-  height: 100px;
-  background-color: aqua;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
 .card {
   /* height: 500px; */
@@ -87,10 +72,4 @@ export default {
   
 }
 
-.card-body .info {
-}
-
-.card-body {
-
-}
 </style>

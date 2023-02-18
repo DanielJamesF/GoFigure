@@ -2,10 +2,12 @@ import { createStore } from "vuex";
 import { router } from "@/router/index.js";
 import bcrypt from "bcryptjs";
 import {
+  clearCart,
   deleteData,
   getDoc,
   getSingle,
   getTable,
+  removeItem,
   setData,
   updateCart,
   updateData,
@@ -200,12 +202,10 @@ export default createStore({
         });
     },
 
-    getuser: async (context, userid) => {
-      userid = context.state.user.docid;
-      console.log(userid);
+    getuser: async (context) => {
+      let userid = context.state.user.docid;
       let data = await getSingle("Users", userid);
       data = data.data();
-      console.log(data);
       context.commit("setuser", data);
       context.dispatch("getCart");
     },
@@ -233,41 +233,17 @@ export default createStore({
 
     //delete one cart item
     removeOne: async (context, id, userid) => {
-      userid = context.state.user.id;
-      fetch(
-        "https://node-eomp-api.herokuapp.com/users/" + userid + "/cart/" + id,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-            "x-auth-token": context.state.token,
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((data) => {
-          alert(data.msg);
-          context.state.cart = null;
-          context.dispatch("getCart");
-        });
+      userid = context.state.user.docid;
+      await removeItem('Users', userid, id)
+      context.dispatch("getuser");
+        // context.state.cart = null;
     },
 
     // delete all cart items
     deleteCart: async (context, userid) => {
-      userid = context.state.user.id;
-      fetch("https://node-eomp-api.herokuapp.com/users/" + userid + "/cart", {
-        method: "DELETE",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "x-auth-token": context.state.token,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          alert(data.msg);
-          context.state.cart = [];
-          context.dispatch("getCart");
-        });
+      userid = context.state.user.docid;
+      await clearCart("Users", userid);
+      context.dispatch('getuser')
     },
 
     addToCart: async (context, id, userid) => {
