@@ -3,16 +3,16 @@
     <div class="container" v-if="product">
       <div class="row mx-auto">
         <div class="text-start">
-        <router-link to="/products">
-        <button v-bind:onclick="back"><span> back</span></button>   
-        </router-link>
-      </div>
+          <router-link to="/products">
+            <button v-bind:onclick="back"><span> back</span></button>
+          </router-link>
+        </div>
         <div class="col-md-6 mx-auto">
           <img :src="product.prodimg" class="mx-auto img-fluid" alt="" />
         </div>
         <div class="col-md-6 d-flex flex-column justify-content-around text-start">
           <h2>{{ product.prodname }}</h2>
-          <h2 >{{ product.category }}</h2>
+          <h2>{{ product.category }}</h2>
           <h2 class="fw-bolder">Price: R{{ product.price }}.00</h2>
           <h2>{{ product.stock }}</h2>
           <button @click="add"><span> Add to cart</span></button>
@@ -46,9 +46,7 @@ export default {
 
   methods: {
     add() {
-      this.$store.dispatch("addToCart", {
-        id: this.id,
-      });
+      this.$store.dispatch("addToCart", this.id);
     },
     back() {
       this.$store.state.product = null;

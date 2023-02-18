@@ -3,43 +3,42 @@
 // register app, don't worry about hosting.
 // 2nd add a cloud firestore database to your firebase project
 // Click next until popups disapperared.
-// Start collection e.g Users (Collection is similiar to a table) 
+// Start collection e.g Users (Collection is similiar to a table)
 // add a document with auto-id e.g
 // add fields to document. (Similiar to JSON keys and values )
 
 // SETTING UP IN VUE
 // create firebase folder in store folder
 // create sdk.js file and queries.js file in firebase folder
-// npm install firebase, bcryptjs, firebase-tools  
+// npm install firebase, bcryptjs, firebase-tools
 
 // IN SDK.JS
 // add firebase SDK
-// copy the code seen at web app sdk 
+// copy the code seen at web app sdk
 
 // IN QUERIES.JS
 // Add all database queries
 
-
 import firebase from "./sdk";
 const db = firebase.firestore();
 
-// adds document id to fields, this may be needed if you add data from 
-// firebase database and not the frontend 
+// adds document id to fields, this may be needed if you add data from
+// firebase database and not the frontend
 export const getDoc = async (qry) => {
   const docs = db.collection(qry);
   const doc = await docs.get();
 
   doc.forEach((doc) => {
-    let prod = doc.data()
-    let id = doc.id
+    let prod = doc.data();
+    let id = doc.id;
     prod.docid = id;
-    let data =  db.collection("Products").doc(doc.id).update(prod);
+    let data = db.collection("Products").doc(doc.id).update(prod);
     console.log(data);
   });
 };
 
 // gets data from table, collecton
-// query = whatever table name you have 
+// query = whatever table name you have
 export const getTable = async (query) => {
   let data = await db
     .collection(query)
@@ -82,7 +81,6 @@ export const setData = async (qry, payload) => {
 
 // this is obvious
 export const updateData = async (qry, payload) => {
-  console.log(payload);
   const data = db.collection(qry).doc(payload.docid).update(payload);
   if (data) {
     alert("Successfully updated");
@@ -101,6 +99,24 @@ export const deleteData = async (qry, payload) => {
   }
 };
 
+// Cart Shit
+// export const
 
+export const updateCart = async (qry, userid, payload) => {
+  let arr;
+  let i = await db.collection(qry).doc(userid).get();
+  i = i.data();
+  i = i.cart;
+  if (i === null) {
+    console.log("Cart empty");
+    arr = [];
+  } else {
+    console.log("Cart Not Empty");
+    arr = JSON.parse(i);
+  }
+  arr.push(payload);
+  arr = JSON.stringify(arr);
 
-
+  let userCart = db.collection(qry).doc(userid);
+  let data = await userCart.update({ cart: arr });
+};

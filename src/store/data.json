@@ -1,1 +1,163 @@
-[{"prodname":"Izuku Midoriya The Amazing Heroes Figure","userid":1,"price":500,"id":1014,"prodimg":"https://i.postimg.cc/c4dcP2yC/banpresto-pvc-scale-figures-my-hero-academia-world-heroes-mission-izuku-midoriya-the-amazing-heroes.jpg","docid":"2TkDuTdxJDH3zSDXYQt0","category":"My Hero Academia","stock":10},{"prodname":"Super Saiyan 4 Goku S.H.Figuarts Figure","price":970,"userid":1,"stock":10,"category":"Dragon Ball","id":1015,"prodimg":"https://i.postimg.cc/nh9gjPFH/bluefin-figma-articulated-figures-dragon-ball-super-saiyan-4-goku-s-h-figuarts-figure-30184781709356.jpg"},{"prodname":"Naruto Uzumaki Vibration Stars III Figure","category":"Naruto Shippuden","prodimg":"https://i.postimg.cc/wvv7zxB0/banpresto-pvc-scale-figures-naruto-shippuden-naruto-uzumaki-vibration-stars-iii-figure-2939587697054.webp","price":490,"stock":10,"userid":1,"id":1009},{"category":"Demon Slayer","userid":1,"prodimg":"https://i.postimg.cc/W1jyfBd9/coleka-demon-slayer-kimetsu-no-yaiba-vibration-stars-rengoku-figurine-de-collection-unisexe-multicol.webp","prodname":"Kyojuro Rengoku Ichibansho Figure","stock":10,"id":1007,"price":730},{"prodname":"Eijiro Kirishima The Amazing Heroes Figure Vol 17","id":1013,"price":490,"prodimg":"https://i.postimg.cc/W3KPxTCR/my-hero-academia-kirishima-the-amazing-heroes-vol17-banpresto.jpg","userid":1,"category":"My Hero Academia","stock":10},{"category":"Dragon Ball","price":1050,"prodname":"Super Saiyan 4 Vegeta, S.H. Figuarts","stock":10,"userid":1,"prodimg":"https://i.postimg.cc/0NbY2TPf/61-AXp-Zj-LEa-L-AC-SL1500.jpg","id":1016},{"stock":10,"userid":1,"category":"Naruto","prodname":"Kakashi Hatake Vibration Stars Figure II","id":1003,"prodimg":"https://i.postimg.cc/CxV0Mn9K/figure-kakashi-hatake-ii-naruto-shippuden-vibration-stars.png","price":440},{"prodimg":"https://i.postimg.cc/tJv0HD81/Copyof-Productphototemplate-4.png","category":"Demon Slayer","userid":1,"id":1005,"price":490,"stock":10,"prodname":"Tengen Uzui Vibration Stars Figure"},{"category":"Jujutsu Kaisen","id":1011,"stock":10,"price":490,"prodimg":"https://i.postimg.cc/yxBHXvSt/STL218100-544x544.jpg","userid":1,"prodname":"Sukuna Combination Battle II Figure"},{"prodimg":"https://i.postimg.cc/QtgJDH83/default-product-image.png","prodname":"Katsuki Bakugo The Amazing Heroes Vol 14 Figure","userid":1,"price":440,"stock":10,"id":1004,"category":"My Hero Academia"},{"price":490,"prodname":"Hawks The Amazing Heroes Figure Vol 24","id":1010,"prodimg":"https://i.postimg.cc/QCSqYdHs/19370-01-1024x1024.jpg","stock":10,"userid":1,"category":"My Hero Academia"},{"prodimg":"https://i.postimg.cc/SsWTrVy0/51-Mnw-A2vbt-L-SL1500.jpg","prodname":"Zenitsu Agatsuma Vibration Stars Figure","stock":10,"price":490,"id":1006,"userid":1,"category":"Demon Slayer"},{"category":"Bleach","price":440,"userid":"1","prodimg ":"https://i.postimg.cc/t4gbwG6q/STL246953.jpg","id":1001,"stock":10,"prodname":"Kenpachi Zaraki Solid and Souls Figure"},{"id":1019,"prodname":"Satoru Gojo DX Figure (Kyoshiki Murasaki Ver.)","prodimg":"https://i.postimg.cc/k5p65scP/STL240004.jpg","category":"Jujutsu Kaisen","userid":1,"price":6500,"stock":10},{"category":"Jujutsu Kaisen","prodname":"ARTFX J Kento Nanami 1/8 Scale Figure","stock":10,"id":1012,"prodimg":"https://i.postimg.cc/SQXTDWGt/kotobukiya-pvc-scale-figures-jujutsu-kaisen-artfx-j-kento-nanami-1-8-scale-figure-30355706773548-200.jpg","userid":1,"price":2200},{"id":1008,"stock":10,"price":490,"prodname":"Minato Namikaze Vibration Stars Figure","userid":1,"prodimg":"https://i.postimg.cc/xTzF60tD/BANPRESTO-Naruto-Shippuden-Vibration-Stars-Minato-Namikaze-Statue-18cm-Pre-Order.jpg","category":"Naruto Shippuden"},{"price":12345,"userid":1,"id":1020,"stock":"12","category":"test","docid":"mucd1DVlQpcfwhHSXfXd","prodimg":"https://i.postimg.cc/QtgJDH83/default-product-image.png","prodname":"test2"},{"price":440,"prodimg":"https://i.postimg.cc/QtgJDH83/default-product-image.png","stock":10,"category":"Bleach","prodname":"Toshiro Hitsugaya Solid and Souls Figure","userid":1,"id":1002},{"price":650,"prodname":"Ban Pop Up Parade","stock":10,"prodimg":"https://i.postimg.cc/4ddwhWVf/good-smile-company-the-seven-deadly-sins-dragons-j.jpg","userid":1,"category":"The Seven Deadly Sins","id":1018},{"prodimg":"https://i.postimg.cc/brJ8K9Qs/bluefin-pvc-scale-figures-dragon-ball-z-super-saiyan-broly-93-back-to-the-film-figure-28385727873068.jpg","stock":10,"id":1017,"category":"Dragon Ball","prodname":"Super Saiyan Broly '93 Back To The Film Ichibansho Figure","price":590,"userid":1}]
+[{
+    "prodname": "Izuku Midoriya The Amazing Heroes Figure",
+    "userid": 1,
+    "price": 500,
+    "id": 1014,
+    "prodimg": "https://i.postimg.cc/c4dcP2yC/banpresto-pvc-scale-figures-my-hero-academia-world-heroes-mission-izuku-midoriya-the-amazing-heroes.jpg",
+    "docid": "2TkDuTdxJDH3zSDXYQt0",
+    "category": "My Hero Academia",
+    "stock": 10
+}, {
+    "prodname": "Super Saiyan 4 Goku S.H.Figuarts Figure",
+    "price": 970,
+    "userid": 1,
+    "stock": 10,
+    "category": "Dragon Ball",
+    "id": 1015,
+    "prodimg": "https://i.postimg.cc/nh9gjPFH/bluefin-figma-articulated-figures-dragon-ball-super-saiyan-4-goku-s-h-figuarts-figure-30184781709356.jpg"
+}, {
+    "prodname": "Naruto Uzumaki Vibration Stars III Figure",
+    "category": "Naruto Shippuden",
+    "prodimg": "https://i.postimg.cc/wvv7zxB0/banpresto-pvc-scale-figures-naruto-shippuden-naruto-uzumaki-vibration-stars-iii-figure-2939587697054.webp",
+    "price": 490,
+    "stock": 10,
+    "userid": 1,
+    "id": 1009
+}, {
+    "category": "Demon Slayer",
+    "userid": 1,
+    "prodimg": "https://i.postimg.cc/W1jyfBd9/coleka-demon-slayer-kimetsu-no-yaiba-vibration-stars-rengoku-figurine-de-collection-unisexe-multicol.webp",
+    "prodname": "Kyojuro Rengoku Ichibansho Figure",
+    "stock": 10,
+    "id": 1007,
+    "price": 730
+}, {
+    "prodname": "Eijiro Kirishima The Amazing Heroes Figure Vol 17",
+    "id": 1013,
+    "price": 490,
+    "prodimg": "https://i.postimg.cc/W3KPxTCR/my-hero-academia-kirishima-the-amazing-heroes-vol17-banpresto.jpg",
+    "userid": 1,
+    "category": "My Hero Academia",
+    "stock": 10
+}, {
+    "category": "Dragon Ball",
+    "price": 1050,
+    "prodname": "Super Saiyan 4 Vegeta, S.H. Figuarts",
+    "stock": 10,
+    "userid": 1,
+    "prodimg": "https://i.postimg.cc/0NbY2TPf/61-AXp-Zj-LEa-L-AC-SL1500.jpg",
+    "id": 1016
+}, {
+    "stock": 10,
+    "userid": 1,
+    "category": "Naruto",
+    "prodname": "Kakashi Hatake Vibration Stars Figure II",
+    "id": 1003,
+    "prodimg": "https://i.postimg.cc/CxV0Mn9K/figure-kakashi-hatake-ii-naruto-shippuden-vibration-stars.png",
+    "price": 440
+}, {
+    "prodimg": "https://i.postimg.cc/tJv0HD81/Copyof-Productphototemplate-4.png",
+    "category": "Demon Slayer",
+    "userid": 1,
+    "id": 1005,
+    "price": 490,
+    "stock": 10,
+    "prodname": "Tengen Uzui Vibration Stars Figure"
+}, {
+    "category": "Jujutsu Kaisen",
+    "id": 1011,
+    "stock": 10,
+    "price": 490,
+    "prodimg": "https://i.postimg.cc/yxBHXvSt/STL218100-544x544.jpg",
+    "userid": 1,
+    "prodname": "Sukuna Combination Battle II Figure"
+}, {
+    "prodimg": "https://i.postimg.cc/QtgJDH83/default-product-image.png",
+    "prodname": "Katsuki Bakugo The Amazing Heroes Vol 14 Figure",
+    "userid": 1,
+    "price": 440,
+    "stock": 10,
+    "id": 1004,
+    "category": "My Hero Academia"
+}, {
+    "price": 490,
+    "prodname": "Hawks The Amazing Heroes Figure Vol 24",
+    "id": 1010,
+    "prodimg": "https://i.postimg.cc/QCSqYdHs/19370-01-1024x1024.jpg",
+    "stock": 10,
+    "userid": 1,
+    "category": "My Hero Academia"
+}, {
+    "prodimg": "https://i.postimg.cc/SsWTrVy0/51-Mnw-A2vbt-L-SL1500.jpg",
+    "prodname": "Zenitsu Agatsuma Vibration Stars Figure",
+    "stock": 10,
+    "price": 490,
+    "id": 1006,
+    "userid": 1,
+    "category": "Demon Slayer"
+}, {
+    "category": "Bleach",
+    "price": 440,
+    "userid": "1",
+    "prodimg ": "https://i.postimg.cc/t4gbwG6q/STL246953.jpg",
+    "id": 1001,
+    "stock": 10,
+    "prodname": "Kenpachi Zaraki Solid and Souls Figure"
+}, {
+    "id": 1019,
+    "prodname": "Satoru Gojo DX Figure (Kyoshiki Murasaki Ver.)",
+    "prodimg": "https://i.postimg.cc/k5p65scP/STL240004.jpg",
+    "category": "Jujutsu Kaisen",
+    "userid": 1,
+    "price": 6500,
+    "stock": 10
+}, {
+    "category": "Jujutsu Kaisen",
+    "prodname": "ARTFX J Kento Nanami 1/8 Scale Figure",
+    "stock": 10,
+    "id": 1012,
+    "prodimg": "https://i.postimg.cc/SQXTDWGt/kotobukiya-pvc-scale-figures-jujutsu-kaisen-artfx-j-kento-nanami-1-8-scale-figure-30355706773548-200.jpg",
+    "userid": 1,
+    "price": 2200
+}, {
+    "id": 1008,
+    "stock": 10,
+    "price": 490,
+    "prodname": "Minato Namikaze Vibration Stars Figure",
+    "userid": 1,
+    "prodimg": "https://i.postimg.cc/xTzF60tD/BANPRESTO-Naruto-Shippuden-Vibration-Stars-Minato-Namikaze-Statue-18cm-Pre-Order.jpg",
+    "category": "Naruto Shippuden"
+}, {
+    "price": 12345,
+    "userid": 1,
+    "id": 1020,
+    "stock": "12",
+    "category": "test",
+    "docid": "mucd1DVlQpcfwhHSXfXd",
+    "prodimg": "https://i.postimg.cc/QtgJDH83/default-product-image.png",
+    "prodname": "test2"
+}, {
+    "price": 440,
+    "prodimg": "https://i.postimg.cc/QtgJDH83/default-product-image.png",
+    "stock": 10,
+    "category": "Bleach",
+    "prodname": "Toshiro Hitsugaya Solid and Souls Figure",
+    "userid": 1,
+    "id": 1002
+}, {
+    "price": 650,
+    "prodname": "Ban Pop Up Parade",
+    "stock": 10,
+    "prodimg": "https://i.postimg.cc/4ddwhWVf/good-smile-company-the-seven-deadly-sins-dragons-j.jpg",
+    "userid": 1,
+    "category": "The Seven Deadly Sins",
+    "id": 1018
+}, {
+    "prodimg": "https://i.postimg.cc/brJ8K9Qs/bluefin-pvc-scale-figures-dragon-ball-z-super-saiyan-broly-93-back-to-the-film-figure-28385727873068.jpg",
+    "stock": 10,
+    "id": 1017,
+    "category": "Dragon Ball",
+    "prodname": "Super Saiyan Broly '93 Back To The Film Ichibansho Figure",
+    "price": 590,
+    "userid": 1
+}]

@@ -7,6 +7,7 @@ import {
   getSingle,
   getTable,
   setData,
+  updateCart,
   updateData,
 } from "./firebase_conn/queries";
 
@@ -41,7 +42,7 @@ export default createStore({
     setcart: (state, cart) => {
       let newCart = JSON.parse(cart);
       state.cart = newCart;
-      // console.log(newCart)
+      console.log(newCart)
     },
     setusers: (state, users) => {
       state.users = users;
@@ -61,7 +62,7 @@ export default createStore({
         if (user.usertype === "Admin") {
           context.state.admin = true;
         }
-        // context.dispatch("getCart");
+        context.dispatch("getuser");
       }
     },
     // retrieves all products
@@ -69,25 +70,13 @@ export default createStore({
       let products = await getTable("Products");
       context.commit("setproducts", products);
     },
-    // getProducts: async (context) => {
-    //   // fetch("http://localhost:3000/products")
-    //   fetch("https://node-eomp-api.herokuapp.com/products")
-    //     .then((res) => res.json())
-    //     .then((data) => context.commit("setproducts", data.results));
-    // },
+
     // retrieves single
     getProduct: async (context, id) => {
       let product = await getSingle("Products", id);
       product = product.data();
       context.commit("setproduct", product);
     },
-
-    // getProduct: async (context, id) => {
-    //   // fetch("http://localhost:3000/products/" + id)
-    //   fetch("https://node-eomp-api.herokuapp.com/products/" + id)
-    //     .then((res) => res.json())
-    //     .then((data) => context.commit("setproduct", data.results));
-    // },
 
     addProduct: async (context, payload) => {
       let table = await getTable("Products");
@@ -103,29 +92,6 @@ export default createStore({
       setData("Products", payload);
       context.dispatch("getProducts");
     },
-    // addProduct: async (context, payload) => {
-    //   const { prodname, prodimg, category, stock, price } = payload;
-    //   // fetch("http://localhost:3000/products", {
-    //   fetch("https://node-eomp-api.herokuapp.com/products", {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       prodname: prodname,
-    //       prodimg: prodimg,
-    //       category: category,
-    //       stock: stock,
-    //       price: price,
-    //     }),
-    //     headers: {
-    //       "Content-type": "application/json; charset=UTF-8",
-    //       "x-auth-token": context.state.token,
-    //     },
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       alert(data.msg);
-    //       context.dispatch("getProducts");
-    //     });
-    // },
 
     // updates list
     updateProduct: async (context, product) => {
@@ -133,23 +99,7 @@ export default createStore({
       context.dispatch("getProducts");
     },
     //
-    // updates list
-    // updateProduct: async (context, product) => {
-    //   // fetch("http://localhost:3000/products/" + product.id, {
-    //   fetch("https://node-eomp-api.herokuapp.com/products/" + product.id, {
-    //     method: "PUT",
-    //     body: JSON.stringify(product),
-    //     headers: {
-    //       "Content-type": "application/json; charset=UTF-8",
-    //       "x-auth-token": context.state.token,
-    //     },
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       alert(data.msg);
-    //       context.dispatch("getProducts");
-    //     });
-    // },
+
     // Deletes Item from db
     deleteProduct: async (context, product) => {
       console.log(product);
@@ -157,24 +107,9 @@ export default createStore({
       context.dispatch("getProducts");
     },
 
-    // // Deletes Item from db
-    // deleteProduct: async (context, id) => {
-    //   // fetch("http://localhost:3000/products/" + id, {
-    //   fetch("https://node-eomp-api.herokuapp.com/products/" + id, {
-    //     method: "DELETE",
-    //     headers: {
-    //       "x-auth-token": context.state.token,
-    //     },
-    //   })
-    //     .then((res) => res.json())
-    //     .then(() => context.dispatch("getProducts"));
-    // },
-
     register: async (context, payload) => {
       // let load = await setData('Users')
       let data = await getTable("Users");
-      console.log(payload);
-      // console.log(load);
 
       if (data.length > 0) {
         for (let i = 0; i < data.length; i++) {
@@ -188,47 +123,6 @@ export default createStore({
         }
       }
     },
-
-    // adds user to db
-    // register: async (context, payload) => {
-    //   const {
-    //     firstname,
-    //     lastname,
-    //     email,
-    //     usertype,
-    //     contact,
-    //     address,
-    //     password,
-    //   } = payload;
-    //   // firstname, lastname, email, usertype, contact, address, password, joindate, cart
-    //   // fetch("http://localhost:3000/users", {
-    //   fetch("https://node-eomp-api.herokuapp.com/users", {
-    //     method: "POST",
-    //     body: JSON.stringify({
-    //       firstname: firstname,
-    //       lastname: lastname,
-    //       email: email,
-    //       usertype: usertype,
-    //       contact: contact,
-    //       address: address,
-    //       password: password,
-    //     }),
-    //     headers: {
-    //       "Content-type": "application/json; charset=UTF-8",
-    //       "x-auth-token": context.state.token,
-    //     },
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       if (data.msg === "Registration Successful") {
-    //         alert(data.msg);
-    //         context.dispatch("login", payload);
-    //       } else {
-    //         alert(data.msg);
-    //         document.getElementById("register").reset();
-    //       }
-    //     });
-    // },
 
     login: async (context, payload) => {
       let data = await getTable("Users");
@@ -248,7 +142,6 @@ export default createStore({
               // router.push({
               //   name: "products",
               // });
-              console.log(data[i]);
               let user = data[i];
               context.commit("setuser", user);
               context.dispatch("setAdmin");
@@ -258,47 +151,7 @@ export default createStore({
           }
         }
       }
-    },
-
-    // logs user in
-    // login: async (context, payload) => {
-    //   const {
-    //     email,
-    //     password
-    //   } = payload;
-    //   // fetch("http://localhost:3000/users", {
-    //   fetch("https://node-eomp-api.herokuapp.com/users", {
-    //       method: "PATCH",
-    //       body: JSON.stringify({
-    //         email: email,
-    //         password: password,
-    //       }),
-    //       headers: {
-    //         "Content-type": "application/json; charset=UTF-8",
-    //         "x-auth-token": await context.state.token,
-    //       },
-    //     })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       if (data.msg === "Login Successful") {
-    //         alert(data.msg);
-    //         let user = data.user;
-    //         let token = data.token;
-    //         let cart = data.user.cart;
-    //         context.commit("setuser", user);
-    //         context.commit("setToken", token);
-    //         context.commit("setcart", cart);
-    //         if (user.usertype === "Admin") {
-    //           context.state.admin = true
-    //         }
-    //         router.push({
-    //           name: "products"
-    //         })
-    //       } else {
-    //         alert(data.msg)
-    //       }
-    //     });
-    // },
+    },    
 
     // Deletes user from db
     deleteuser: async (context, id) => {
@@ -331,13 +184,15 @@ export default createStore({
         });
     },
 
-    // getuser : async (context) => {
-    //   fetch("http://localhost:3000/verify")
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     context.commit("setuser", data.user)
-    //   })
-    // },
+    getuser : async (context, userid) => {
+      userid = context.state.user.docid
+      console.log(userid);
+      let data = await getSingle('Users', userid)
+      data = data.data()
+      console.log(data);
+      context.commit('setuser', data)
+      context.dispatch('getCart')
+    },
 
     // retrieves all users
     getusers: async (context) => {
@@ -355,21 +210,9 @@ export default createStore({
     },
 
     // get cart
-    getCart: async (context, id) => {
-      id = context.state.user.id;
-      // fetch("http://localhost:3000/users/" + id + "/cart", {
-      fetch("https://node-eomp-api.herokuapp.com/users/" + id + "/cart", {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-          "x-auth-token": context.state.token,
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          let cart = JSON.stringify(data);
-          context.commit("setcart", cart);
-        });
+    getCart: async (context) => { 
+      let products = context.state.user.cart
+      context.commit('setcart', products)      
     },
 
     //delete one cart item
@@ -415,25 +258,18 @@ export default createStore({
       if (context.state.user === null) {
         alert("Please login");
       } else {
-        userid = context.state.user.id;
-        // fetch("http://localhost:3000/users/" + id +"/cart",{
-        fetch("https://node-eomp-api.herokuapp.com/users/" + userid + "/cart", {
-          method: "POST",
-          body: JSON.stringify(id),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-            "x-auth-token": context.state.token,
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            alert(data.msg);
-            context.dispatch("getCart");
-          });
+        userid = context.state.user.docid;
+
+        // product data
+        let data = await getSingle('Products', id)
+        data = data.data();
+        // add data to cart field
+        await updateCart('Users', userid, data)
+
+        // updates user
+        context.dispatch('getuser')
       }
     },
-
-    getdata: async (context) => {},
   },
   modules: {},
 });
