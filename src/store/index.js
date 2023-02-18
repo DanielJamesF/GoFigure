@@ -13,6 +13,22 @@ import {
 
 export default createStore({
   state: {
+    creators: [
+      {
+        name: "Abdus-Samad Charles",
+        bio: "Yo, I am an aspiring Web Developer with interest in Web Design and Software Development.",
+        linkedin: "https://www.linkedin.com/in/abdus-samad-charles-51bba5227/",
+        github: "https://github.com/A-SCharles",
+        image: "https://i.postimg.cc/fLBvCyGX/1638605458244.jpg",
+      },
+      {
+        name: "Daniel Fredericks",
+        bio: "Hi I am Daniel Fredericks I am an aspiring Web Developer with interest in Web Design and Software Development.",
+        linkedin: "https://www.linkedin.com/in/daniel-fredericks-85744023a/",
+        github: "https://github.com/DanielJamesF",
+        image: "https://i.postimg.cc/DZCFdbkH/Daniel-3.jpg",
+      },
+    ],
     products: null,
     product: null,
     token: null || localStorage.getItem("token"),
@@ -42,7 +58,7 @@ export default createStore({
     setcart: (state, cart) => {
       let newCart = JSON.parse(cart);
       state.cart = newCart;
-      console.log(newCart)
+      console.log(newCart);
     },
     setusers: (state, users) => {
       state.users = users;
@@ -151,7 +167,7 @@ export default createStore({
           }
         }
       }
-    },    
+    },
 
     // Deletes user from db
     deleteuser: async (context, id) => {
@@ -184,14 +200,14 @@ export default createStore({
         });
     },
 
-    getuser : async (context, userid) => {
-      userid = context.state.user.docid
+    getuser: async (context, userid) => {
+      userid = context.state.user.docid;
       console.log(userid);
-      let data = await getSingle('Users', userid)
-      data = data.data()
+      let data = await getSingle("Users", userid);
+      data = data.data();
       console.log(data);
-      context.commit('setuser', data)
-      context.dispatch('getCart')
+      context.commit("setuser", data);
+      context.dispatch("getCart");
     },
 
     // retrieves all users
@@ -210,9 +226,9 @@ export default createStore({
     },
 
     // get cart
-    getCart: async (context) => { 
-      let products = context.state.user.cart
-      context.commit('setcart', products)      
+    getCart: async (context) => {
+      let products = context.state.user.cart;
+      context.commit("setcart", products);
     },
 
     //delete one cart item
@@ -261,13 +277,13 @@ export default createStore({
         userid = context.state.user.docid;
 
         // product data
-        let data = await getSingle('Products', id)
+        let data = await getSingle("Products", id);
         data = data.data();
         // add data to cart field
-        await updateCart('Users', userid, data)
+        await updateCart("Users", userid, data);
 
         // updates user
-        context.dispatch('getuser')
+        context.dispatch("getuser");
       }
     },
   },
