@@ -46,8 +46,8 @@
             id="contact"
             v-model="contact"
             class="form-control my-3"
-            type="text"
-            minlength="10"
+            type="tel"
+            minlength="10" maxlength="10"
             placeholder="Add Contact Number"
             required
           />

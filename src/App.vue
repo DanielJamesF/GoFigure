@@ -19,16 +19,16 @@ export default {
   color: #2c3e50;
 }
 
-button {
+button:not(.swal2-container) {
   background: rgb(0,172,238);
   background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
   width: 130px;
   height: 40px;
   line-height: 42px;
   padding: 0;
-  border: none;
-  
+  border: none; 
 }
+
 button span {
   position: relative;
   display: block;

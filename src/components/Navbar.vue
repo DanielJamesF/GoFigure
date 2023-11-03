@@ -1,23 +1,13 @@
 <template>
-  <nav
-    class="navbar navbar-expand-md sticky-top"
-    style="background-color: #e3f2fd"
-  >
+  <nav class="navbar navbar-expand-md sticky-top" style="background-color: #e3f2fd">
     <div class="container-fluid">
       <div id="div" class="nav-item">
         <router-link :to="{ name: 'home' }">
-        <img class="img-fluid" src="https://i.postimg.cc/SR1CkbHM/figure1.png" alt="">
+          <img class="img-fluid" src="https://i.postimg.cc/SR1CkbHM/figure1.png" alt="">
         </router-link>
       </div>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -35,7 +25,7 @@
 
             <router-link to="/cart">
               <button class="btn rounded-pill">
-                <i class="fs-4 fa-solid fa-cart-shopping">{{num}}</i>
+                <i class="fs-4 fa-solid fa-cart-shopping">{{ num }}</i>
               </button>
             </router-link>
           </div>
@@ -68,15 +58,18 @@
 </template>
 
 <script>
+import router from '@/router';
+import Swal from 'sweetalert2';
+
 export default {
   data() {
     return {
-      
+
     }
   },
   mounted() {
     this.$store.dispatch("setAdmin")
-},
+  },
   computed: {
     user() {
       return this.$store.state.user;
@@ -84,26 +77,40 @@ export default {
     admin() {
       return this.$store.state.admin;
     },
-    num: function() {
-    let Cnum = this.$store.state.cart;
-    if ((Cnum === null) || (Cnum === undefined)){
-      Cnum = 0;
-      return Cnum;
-    } else {
-      // Cnum.length
-      let i = Cnum.length
-      return i;
-    }
+    num: function () {
+      let Cnum = this.$store.state.cart;
+      if ((Cnum === null) || (Cnum === undefined)) {
+        Cnum = 0;
+        return Cnum;
+      } else {
+        // Cnum.length
+        let i = Cnum.length
+        return i;
+      }
     },
   },
   methods: {
     logout() {
-      this.$store.state.user = null;
-      this.$store.state.cart = null;
-      this.$store.state.token = null;
-      this.$store.state.admin = false;
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
+      Swal.fire({
+        title: 'Are you sure you want to logout?',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Yes',
+        denyButtonText: `No`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          this.$store.state.user = null;
+          this.$store.state.cart = null;
+          this.$store.state.token = null;
+          this.$store.state.admin = false;
+          localStorage.removeItem('GoFigureToken');
+          localStorage.removeItem('GoFigureUser');
+          router.push('/')
+        } else if (result.isDenied) {
+
+        }
+      })
     },
   },
 };
@@ -116,18 +123,21 @@ img {
   padding: 2px;
 }
 
-#div span{
+#div span {
   padding: 3px;
 }
+
 @media (max-width: 365px) {
-  #go{
+  #go {
     height: 20px;
   }
-  #I{
+
+  #I {
 
     height: 30px;
   }
 }
+
 @media (max-width: 224px) {
   #div {
     display: none;
