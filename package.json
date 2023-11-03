@@ -7,7 +7,10 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
     "core-js": "^3.8.3",
+    "firebase": "^8.2.1",
     "firebase-tools": "^11.7.0",
     "sweetalert2": "^11.7.28",
     "vue": "^3.2.13",

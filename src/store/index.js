@@ -23,6 +23,22 @@ export default createStore({
         image: "https://i.postimg.cc/DZCFdbkH/Daniel-3.jpg",
       },
     ],
+    creators: [
+      {
+        name: "Abdus-Samad Charles",
+        bio: "Yo, I am an aspiring Web Developer with interest in Web Design and Software Development.",
+        linkedin: "https://www.linkedin.com/in/abdus-samad-charles-51bba5227/",
+        github: "https://github.com/A-SCharles",
+        image: "https://i.postimg.cc/fLBvCyGX/1638605458244.jpg",
+      },
+      {
+        name: "Daniel Fredericks",
+        bio: "Hi I am Daniel Fredericks I am an aspiring Web Developer with interest in Web Design and Software Development.",
+        linkedin: "https://www.linkedin.com/in/daniel-fredericks-85744023a/",
+        github: "https://github.com/DanielJamesF",
+        image: "https://i.postimg.cc/DZCFdbkH/Daniel-3.jpg",
+      },
+    ],
     products: null,
     product: null,
     token: null || localStorage.getItem("GoFigureToken"),
@@ -52,7 +68,7 @@ export default createStore({
     setcart: (state, cart) => {
       let newCart = JSON.parse(cart);
       state.cart = newCart;
-      // console.log(newCart)
+      console.log(newCart);
     },
     setusers: (state, users) => {
       state.users = users;
@@ -67,6 +83,7 @@ export default createStore({
     setAdmin: async (context) => {
       let user = context.state.user;
       if (user != null) {
+        // console.log(user.usertype);
         if (user.usertype === "Admin") {
           context.state.admin = true;
         }
@@ -80,6 +97,7 @@ export default createStore({
         .then((res) => res.json())
         .then((data) => context.commit("setproducts", data.results));
     },
+
     // retrieves single
     getProduct: async (context, id) => {
       // fetch("http://localhost:3000/products/" + id)
@@ -139,6 +157,8 @@ export default createStore({
           context.dispatch("getProducts");
         });
     },
+    //
+
     // Deletes Item from db
     deleteProduct: async (context, id) => {
       sweet
@@ -174,7 +194,6 @@ export default createStore({
       // fetch("http://localhost:3000/products/" + id, {
     },
 
-    // adds user to db
     register: async (context, payload) => {
       const {
         firstname,
@@ -209,13 +228,14 @@ export default createStore({
             alert(data.msg);
             context.dispatch("login", payload);
           } else {
-            alert(data.msg);
-            document.getElementById("register").reset();
+            // console.log("Incorrect Email");
+            payload.password = await bcrypt.hash(payload.password, 10);
+            setData("Users", payload);
           }
-        });
+        }
+      }
     },
 
-    // logs user in
     login: async (context, payload) => {
       const { email, password } = payload;
       // fetch("http://localhost:3000/users", {
@@ -259,7 +279,8 @@ export default createStore({
               timer: 2000,
             });
           }
-        });
+        }
+      }
     },
 
     // Deletes user from db

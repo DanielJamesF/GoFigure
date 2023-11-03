@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <br>
     <div class="row">
-        <div id="links2" class="col">
+        <!-- <div id="links2" class="col">
             <h1>Social links</h1>
             <a href="https://www.facebook.com/login"><i class="bi bi-facebook"></i></a>
             <br>
@@ -13,18 +13,18 @@
             <a href="https://github.com/signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F&source=header-home"><i class="bi bi-github"></i></a>
             <br>
             <a href="https://twitter.com/i/flow/login"><i class="bi bi-twitter"></i></a>
-        </div>
-        <div id="links" class="col">
-          <h1>Quick links</h1>
-          <router-link to="/">- Home page</router-link>
+        </div> -->
+        <h2>Quick links</h2>
+        <div id="links" class="col-md-6 mx-auto d-flex align-content-center justify-content-between">
+          <router-link to="/">Home page</router-link>
           <br />
-          <router-link to="/about">- About us</router-link>
+          <router-link to="/about">About us</router-link>
           <br />
-          <router-link to="/login">- Login page</router-link>
+          <router-link to="/login">Login page</router-link>
           <br />
-          <router-link to="/register">- Register page</router-link>
+          <router-link to="/register">Register page</router-link>
           <br />
-          <router-link to="/contact">- Contact us</router-link>
+          <router-link to="/contact">Contact us</router-link>
         </div>
       <!-- </div> -->
     </div>
@@ -46,7 +46,7 @@ export default {
 a {
   text-decoration: none;
 }
-#links {
+/* #links {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,5 +55,5 @@ a {
     display: flex;
     flex-direction: column;
     font-size: 15px;
-}
+} */
 </style>

@@ -1,48 +1,33 @@
 <template>
   <section id="cart">
     <div v-if="cart" class="p-4 m-3">
-          <div
-        class="modal fade"
-        id="checkout"
-        tabindex="-1"
-        aria-labelledby="checkout"
-        aria-hidden="true"
-      >
+      <div class="modal fade" id="checkout" tabindex="-1" aria-labelledby="checkout" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-               <div v-for="item in cart" :key="item" :item="item" class="row">
-                  <div class="col-md-7">
-                    <p>
-                      <span class="">{{ item.prodname }}</span>
-                    </p>
-                  </div>
-                  <div class="col-md-5">
-                    <p>
-                      <span>R{{ item.price }}.00</span>
-                    </p>
-                  </div>
+              <div v-for="item in cart" :key="item" :item="item" class="row">
+                <div class="col-md-7">
+                  <p>
+                    <span class="">{{ item.prodname }}</span>
+                  </p>
                 </div>
-                <p id="total">
-                  <span class="fw-bolder">Total:</span>(
-                  <span>{{ num }} item</span> ) <span>R{{ total }}.00</span>
-                </p>
+                <div class="col-md-5">
+                  <p>
+                    <span>R{{ item.price }}.00</span>
+                  </p>
+                </div>
+              </div>
+              <p id="total">
+                <span class="fw-bolder">Total:</span>(
+                <span>{{ num }} item</span> ) <span>R{{ total }}.00</span>
+              </p>
             </div>
             <div class="modal-footer justify-content-between">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                 Cancel
               </button>
               <button @click="checkout" type="button" class="btn btn-primary w-50" data-bs-dismiss="modal">
@@ -55,13 +40,8 @@
       <div class="row mx-auto">
         <button class="btn btn-warning" @click="removeAll">Remove all</button>
         <div class="col-md-7">
-          <div
-            v-for="item in cart"
-            :key="item"
-            :item="item"
-            class="card m-3 p-3 mx-auto shadow"
-            style="width: fit-content; height: fit-content"
-          >
+          <div v-for="item in cart" :key="item" :item="item" class="card m-3 p-3 mx-auto shadow"
+            style="width: fit-content; height: fit-content">
             <div class="row">
               <div class="col-md-3">
                 <img :src="item.prodimg" class="img-fluid" />
@@ -72,11 +52,8 @@
                   <span class="fw-bolder">R{{ item.price }}.00</span>
                 </h4>
 
-                <button
-                  id="delete"
-                  class="btn btn-warning float-sm-end"
-                  @click="$store.dispatch('removeOne', item.prodid)"
-                >
+                <button id="delete" class="btn btn-warning float-sm-end"
+                  @click="$store.dispatch('removeOne', item.docid)">
                   Delete Item
                 </button>
               </div>
@@ -104,15 +81,10 @@
                   <span class="fw-bolder">Total:</span>(
                   <span>{{ num }} item</span> ) <span>R{{ total }}.00</span>
                 </p>
-                <button
-                  class="btn btn-success"
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#checkout"
-                >
+                <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#checkout">
                   Checkout
                 </button>
-              
+
               </div>
             </div>
           </div>
@@ -140,12 +112,15 @@ export default {
     cart() {
       return this.$store.state.cart;
     },
-   total() {
+    total() {
       let prices = this.$store.state.cart;
-      let sum = prices.reduce((x, cart) => {
-        return x + cart.price;
-      }, 0);
-      return sum;
+
+      if (prices.length > 0) {
+        let sum = prices.reduce((x, cart) => {
+          return x + cart.price;
+        }, 0);
+        return sum;
+      }
     },
     num: function () {
       let Cnum = this.$store.state.cart;
@@ -165,7 +140,7 @@ export default {
     checkout() {
       alert("Thank you for your purchase. Please Come back again soon.")
       this.$store.dispatch("deleteCart");
-      router.push({name: 'home'})
+      router.push({ name: 'home' })
     },
   },
 };
