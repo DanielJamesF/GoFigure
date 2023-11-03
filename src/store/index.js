@@ -2,7 +2,6 @@ import { createStore } from "vuex";
 import { router } from "@/router/index.js";
 import sweet from "sweetalert2";
 
-// const sweet = require('sweetalert2')
 const api = "https://gofigure-api.onrender.com";
 
 export default createStore({
@@ -225,16 +224,24 @@ export default createStore({
         .then((response) => response.json())
         .then((data) => {
           if (data.msg === "Registration Successful") {
-            alert(data.msg);
+            sweet.fire({
+              icon: "success",
+              title: "Success",
+              text: data.msg,
+              timer: 2000,
+            });
             context.dispatch("login", payload);
           } else {
-            // console.log("Incorrect Email");
-            payload.password = await bcrypt.hash(payload.password, 10);
-            setData("Users", payload);
+            sweet.fire({
+              icon: "error",
+              title: "Error",
+              text: data.msg,
+              timer: 2000,
+            });
           }
-        }
-      }
-    },
+        })
+      },
+    
 
     login: async (context, payload) => {
       const { email, password } = payload;
@@ -279,9 +286,9 @@ export default createStore({
               timer: 2000,
             });
           }
-        }
-      }
-    },
+        })
+      },
+    
 
     // Deletes user from db
     deleteuser: async (context, id) => {
